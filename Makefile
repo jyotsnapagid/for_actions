@@ -1,4 +1,5 @@
-
+TIMESTAMP=$(shell date +%Y%m%d%H%M%S)
+VERSION=$(shell git branch --show-current)
 
 pylint-src:
 	PYTHONPATH="src/" pylint --recursive=true src/ -f parseable | tee pylint.out
@@ -11,3 +12,8 @@ test: requirements-dev.txt
 	fi
 	source env-test/bin/activate; python3 -m pytest -vv --cov src/ && coverage xml && coverage html && pylint src/ -f parseable | tee code-cov/pylint.out; mv htmlcov code-cov/; mv coverage.xml code-cov;
 
+push-cov:
+	git add code-cov; git commit -m 'code-cov commit at $(TIMESTAMP)'; git push origin $(VERSION)
+
+echo-timestamp:
+	echo $(TIMESTAMP)

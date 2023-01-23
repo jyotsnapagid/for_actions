@@ -4,11 +4,20 @@ jobs:
   check-docker-version:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: echo "Hello"
-      - uses: actions/setup-python@v2
+      - name: checkout code
+        uses: actions/checkout@v2
+      - name: say hello
+        run: echo "Hello"
+      - name: check python version
+        uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      - run: python3 --version
-      - run: docker --version
-      - run: make test
+        run: python3 --version
+      - name: check python version again
+        run: python3 --version
+      - name: check docker version
+        run: docker --version
+      - name: run tests
+        run: make test
+      - name: push code-cov
+        run: make push-cov
