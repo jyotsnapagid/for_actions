@@ -13,6 +13,8 @@ test: requirements-dev.txt
 	source env-test/bin/activate; python3 -m pytest -vv --cov src/ && coverage xml && coverage html && pylint src/ -f parseable | tee code-cov/pylint.out; mv htmlcov code-cov/; mv coverage.xml code-cov;
 
 push-cov:
+	git config --global user.name 'GitHub Testing'
+	git config --global user.email 'test@testemail.com'
 	git remote set-url --push origin https://oauth2:$(GH_TOKEN)@github.com/jyotsnapagid/for_actions.git
 	git add code-cov; git commit -m 'code-cov commit at $(TIMESTAMP)'; git push origin $(VERSION)
 
