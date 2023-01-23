@@ -2,7 +2,7 @@ name: test-python
 on: 
   push: 
     branches:
-      - *
+      - '*'
     paths-ignore:
       - 'code-cov/*'
 jobs:
