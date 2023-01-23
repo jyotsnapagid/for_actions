@@ -8,11 +8,12 @@ jobs:
         uses: actions/checkout@v2
       - name: say hello
         run: echo "Hello"
-      - name: check python version
+      - name: check python version 
+        run: python3 --version
+      - name: setup python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-        run: python3 --version
       - name: check python version again
         run: python3 --version
       - name: check docker version
