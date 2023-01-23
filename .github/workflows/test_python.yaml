@@ -1,6 +1,9 @@
 name: test-python
-on: [push]
-  paths-ignore:
+on: 
+  push: 
+    branches:
+      - *
+    paths-ignore:
       - 'code-cov/*'
 jobs:
   check-docker-version:
