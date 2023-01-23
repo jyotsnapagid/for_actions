@@ -1,0 +1,11 @@
+************* Module utils
+src/utils.py:1: [C0114(missing-module-docstring), ] Missing module docstring
+src/utils.py:4: [C0116(missing-function-docstring), is_prime] Missing function or method docstring
+src/utils.py:4: [C0103(invalid-name), is_prime] Argument name "n" doesn't conform to snake_case naming style
+src/utils.py:19: [C0116(missing-function-docstring), cubic] Missing function or method docstring
+src/utils.py:19: [C0103(invalid-name), cubic] Argument name "a" doesn't conform to snake_case naming style
+src/utils.py:23: [C0116(missing-function-docstring), say_hello] Missing function or method docstring
+
+-----------------------------------
+Your code has been rated at 6.67/10
+
