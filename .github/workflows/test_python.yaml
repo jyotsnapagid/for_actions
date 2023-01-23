@@ -1,0 +1,14 @@
+name: test-python
+on: [push]
+jobs:
+  check-docker-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "Hello"
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      - run: python3 --version
+      - run: docker --version
+      - run: make test
