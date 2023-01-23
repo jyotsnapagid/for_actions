@@ -16,7 +16,7 @@ push-cov:
 	git config user.name github-actions
 	git config user.email github-actions@github.com
 	git remote set-url --push origin https://oauth2:$(GH_TOKEN)@github.com/jyotsnapagid/for_actions.git
-	git add code-cov; git commit -m 'code-cov commit at $(TIMESTAMP)'; git push origin $(VERSION)
+	git add code-cov/*; git commit -m 'code-cov commit at $(TIMESTAMP)'; git push origin $(VERSION)
 #	git config --global user.name 'GitHub Testing'
 #	git config --global user.email 'test@testemail.com'
 
