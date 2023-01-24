@@ -4,8 +4,8 @@ on:
     branches:
       - '*'
       #- !main
-    paths-ignore:
-      - 'code-cov/*'
+    # paths-ignore:
+    #  - 'code-cov/*'
     paths:
       - 'CWL/*'
       #**will include sub-folders
