@@ -6,10 +6,10 @@ pylint-src:
 	PYTHONPATH="src/" pylint --recursive=true src/ -f parseable | tee pylint.out
 
 docker-build:
-	docker build -t $(ECR_REGISTRY)/testing_repo:$(VERSION) .
+	docker build -t $(ECR_REGISTRY)/testing_repo:$(VERSION) -f Dockerfile .
 
 docker-push:
-	docker push $(ECR_REGISTRY)/testing_repo:$(VERSION) .
+	docker push $(ECR_REGISTRY)/testing_repo:$(VERSION)
 
 test: requirements-dev.txt
 	if [ ! -d env-test ]; then \
