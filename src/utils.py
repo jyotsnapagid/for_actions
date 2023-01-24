@@ -1,3 +1,4 @@
+import sys
 import math
 
 
@@ -22,3 +23,6 @@ def cubic(a):
 
 def say_hello(name):
     return "Hello, " + name
+
+if __name__ == "__main__":
+    print(say_hello(sys.argv[1]))

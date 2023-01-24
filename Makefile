@@ -1,8 +1,15 @@
 TIMESTAMP=$(shell date +%Y%m%d%H%M%S)
 VERSION=$(shell git branch --show-current)
 
+
 pylint-src:
 	PYTHONPATH="src/" pylint --recursive=true src/ -f parseable | tee pylint.out
+
+docker-build:
+	docker build -t $(ECR_REGISTRY)/testing_repo:$(VERSION) .
+
+docker-push:
+	docker build -t $(ECR_REGISTRY)/testing_repo:$(VERSION) .
 
 test: requirements-dev.txt
 	if [ ! -d env-test ]; then \
@@ -15,10 +22,7 @@ test: requirements-dev.txt
 push-cov:
 	git config user.name github-actions
 	git config user.email github-actions@github.com
-	#git remote set-url --push origin https://oauth2:$(GH_TOKEN)@github.com/jyotsnapagid/for_actions.git
 	git add code-cov/*; git add -f code-cove/htmlcov/index.html; git commit -m 'code-cov commit at $(TIMESTAMP)'; git push origin $(VERSION)
-#	git config --global user.name 'GitHub Testing'
-#	git config --global user.email 'test@testemail.com'
 
 echo-timestamp:
 	echo $(TIMESTAMP)
