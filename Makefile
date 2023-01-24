@@ -9,7 +9,7 @@ docker-build:
 	docker build -t $(ECR_REGISTRY)/testing_repo:$(VERSION) .
 
 docker-push:
-	docker push -t $(ECR_REGISTRY)/testing_repo:$(VERSION) .
+	docker push $(ECR_REGISTRY)/testing_repo:$(VERSION) .
 
 test: requirements-dev.txt
 	if [ ! -d env-test ]; then \
