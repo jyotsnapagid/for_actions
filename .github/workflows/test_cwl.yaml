@@ -1,0 +1,23 @@
+name: test-python
+on: 
+  push: 
+    branches:
+      - '*'
+      #- !main
+    paths-ignore:
+      - 'code-cov/*'
+    paths:
+      - 'CWL/*'
+      #**will include sub-folders
+jobs:
+  check-docker-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{secrets.GH_TOKEN}}
+      - name: say hello
+        run: echo "Hello"
+      - name: run cwl validate
+        run: make cwl-validate

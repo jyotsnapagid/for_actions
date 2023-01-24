@@ -19,6 +19,14 @@ test: requirements-dev.txt
 	fi
 	source env-test/bin/activate; python3 -m pytest -vv --cov src/ && coverage xml && coverage html && pylint src/ -f parseable | tee code-cov/pylint.out; mv htmlcov code-cov/; mv coverage.xml code-cov;
 
+cwl-validate: requirements-dev.txt
+	if [ ! -d env-test ]; then \
+    	python3 -m venv env-test; \
+        source env-test/bin/activate; \
+        pip3 install -r requirements-dev.txt; \
+	fi
+	source env-test/bin/activate; cwl-runner --validate CWL/*;
+
 push-cov:
 	git config user.name github-actions
 	git config user.email github-actions@github.com

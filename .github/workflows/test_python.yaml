@@ -5,6 +5,7 @@ on:
       - '*'
     paths-ignore:
       - 'code-cov/*'
+      - 'CWL/*'
 jobs:
   check-docker-version:
     runs-on: ubuntu-latest
